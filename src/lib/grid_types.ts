@@ -26,5 +26,6 @@ export interface SmxSongGridRow {
 
 	all_single: number[];
 	all_full: number[];
+	cover_path: string;
 	// comment: string;
 }

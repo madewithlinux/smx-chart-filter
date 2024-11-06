@@ -54,6 +54,7 @@ export const songDataToGridRows = (
 			artist: sd.artist,
 			label: sd.label,
 			bpm: sd.bpm,
+			cover_path: sd.cover_path,
 			genre: sd.genre,
 			created_at: sd.created_at,
 			beginner: diffs['beginner'] ?? undefined,

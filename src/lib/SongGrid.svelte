@@ -12,6 +12,7 @@
 
 	import AgGridSvelte5 from 'ag-grid-svelte5';
 	import type { SmxSongGridRow } from './grid_types';
+	import { songNameCellRenderer } from './grid_util';
 	// import { formatFixedDecimal, formatPercentage, mapperNameCellRenderer, songNameCellRenderer } from './grid_util';
 
 	let {
@@ -27,25 +28,29 @@
 
 	//////// grid config
 	let columnDefs: ColDef[] = [
-		{ headerName: 'id', field: 'id' },
-		{ headerName: 'title', field: 'title' },
-		{ headerName: 'subtitle', field: 'subtitle' },
-		{ headerName: 'artist', field: 'artist' },
-		{ headerName: 'label', field: 'label' },
-		{ headerName: 'bpm', field: 'bpm' },
-		{ headerName: 'genre', field: 'genre' },
-		{ headerName: 'created_at', field: 'created_at' },
-		{ headerName: 'beginner', field: 'beginner' },
-		{ headerName: 'easy', field: 'easy' },
-		{ headerName: 'easy_p', field: 'easy_p' },
-		{ headerName: 'hard', field: 'hard' },
-		{ headerName: 'hard_p', field: 'hard_p' },
-		{ headerName: 'wild', field: 'wild' },
-		{ headerName: 'dual', field: 'dual' },
-		{ headerName: 'dual_p', field: 'dual_p' },
-		{ headerName: 'full', field: 'full' },
-		{ headerName: 'full_p', field: 'full_p' },
-		{ headerName: 'team', field: 'team' },
+		{ headerName: 'id', field: 'id', hide: !allColumns },
+		{ headerName: 'title', field: 'title',
+		cellRenderer: songNameCellRenderer({ showCoverImage: songCoverImageEnabled }),
+		 },
+		 { headerName: 'bpm', field: 'bpm' },
+		 { headerName: 'B', field: 'beginner' },
+		 { headerName: 'E', field: 'easy' },
+		 { headerName: 'E+', field: 'easy_p' },
+		 { headerName: 'H', field: 'hard' },
+		 { headerName: 'H+', field: 'hard_p' },
+		 { headerName: 'W', field: 'wild' },
+		 { headerName: 'D', field: 'dual' },
+		 { headerName: 'D+', field: 'dual_p' },
+		 { headerName: 'F', field: 'full' },
+		 { headerName: 'F+', field: 'full_p' },
+		 { headerName: 'T', field: 'team' },
+
+		 { headerName: 'subtitle', field: 'subtitle' },
+		 { headerName: 'artist', field: 'artist' },
+		 { headerName: 'label', field: 'label' },
+		 { headerName: 'genre', field: 'genre' },
+		 { headerName: 'created_at', field: 'created_at', hide: !allColumns },
+
 		{ headerName: 'xmod', field: 'xmod' },
 		{ headerName: 'bpm_min', field: 'bpm_min' },
 		{ headerName: 'bpm_max', field: 'bpm_max' },
