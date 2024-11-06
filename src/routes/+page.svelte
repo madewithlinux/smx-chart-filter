@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import SongDataTable from '$lib/SongDataTable.svelte';
 	import SongGrid from '$lib/SongGrid.svelte';
 	import { hasMatchingDifficulty, songDataToGridRows } from '$lib/statmaniax_data_util';
 	import type { StatmaniaxAllSongData } from '../statmaniax';
@@ -69,7 +70,8 @@
 		</div>
 	</div>
 	<div class="content">
-		<SongGrid rowData={filtered_grid_rows} />
+		<SongDataTable rowData={filtered_grid_rows} />
+		<!-- <SongGrid rowData={filtered_grid_rows} /> -->
 	</div>
 </div>
 
