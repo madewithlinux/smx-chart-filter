@@ -12,11 +12,19 @@
 	let p2_dif_min = $state(8);
 	let p2_dif_max = $state(13);
 
+	let bpm_min = $state(0);
+	let bpm_max = $state(999);
+
+	let allow_xmod = $state(false);
+
 	let filtered_grid_rows = $derived(
 		all_grid_rows.filter(
 			(row) =>
 				hasMatchingDifficulty(p1_dif_min, p1_dif_max, 'single', row) &&
-				hasMatchingDifficulty(p2_dif_min, p2_dif_max, 'single', row)
+				hasMatchingDifficulty(p2_dif_min, p2_dif_max, 'single', row) &&
+				row.bpm_max >= bpm_min &&
+				row.bpm_max <= bpm_max &&
+				(allow_xmod || !row.xmod)
 		)
 	);
 </script>
@@ -40,6 +48,20 @@
 			</label>
 			<label>
 				max <input type="number" bind:value={p2_dif_max} />
+			</label>
+		</div>
+		<div class="row">
+			primary BPM:
+			<label>
+				min <input type="number" bind:value={bpm_min} />
+			</label>
+			<label>
+				max <input type="number" bind:value={bpm_max} />
+			</label>
+		</div>
+		<div class="row">
+			<label>
+				allow xmod?: <input type="checkbox" bind:checked={allow_xmod} />
 			</label>
 		</div>
 		<div class="row">
@@ -84,7 +106,7 @@
 		display: flex;
 		gap: var(--gap);
 	}
-	.row input[type=number] {
+	.row input[type='number'] {
 		width: 80px;
 		text-align: right;
 	}
