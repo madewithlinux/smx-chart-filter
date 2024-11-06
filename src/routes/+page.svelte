@@ -19,7 +19,6 @@
 				hasMatchingDifficulty(p2_dif_min, p2_dif_max, 'single', row)
 		)
 	);
-
 </script>
 
 <div class="container">
@@ -33,6 +32,8 @@
 			<label>
 				max <input type="number" bind:value={p1_dif_max} />
 			</label>
+		</div>
+		<div class="row">
 			P2 difficulty:
 			<label>
 				min <input type="number" bind:value={p2_dif_min} />
@@ -42,7 +43,7 @@
 			</label>
 		</div>
 		<div class="row">
-			showing {filtered_grid_rows.length} matching charts (out of {all_grid_rows.length} total)
+			{filtered_grid_rows.length} (of {all_grid_rows.length}) charts match
 		</div>
 	</div>
 	<div class="content">
@@ -70,8 +71,8 @@
 	div.header {
 		/* padding: 10px; */
 		/* padding: 1em; */
-		padding-left: 1em;
-		padding-right: 1em;
+		padding-left: 0.5em;
+		padding-right: 0.5em;
 		padding-top: var(--gap);
 		padding-bottom: var(--gap);
 		gap: var(--gap);
@@ -82,6 +83,10 @@
 	.row {
 		display: flex;
 		gap: var(--gap);
+	}
+	.row input[type=number] {
+		width: 80px;
+		text-align: right;
 	}
 	.row .wide {
 		flex-grow: 1;
